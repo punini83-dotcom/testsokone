@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>底値帳</title>
+    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <script>
+    (function(d) {
+        var config = {
+        kitId: 'utj7bxb',
+        scriptTimeout: 3000,
+        async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+    </script>
+
+</head>
+<body>
+
+    <!-- トップ　-->   
+    <div id="inputPage">
+        <h1>最安値サーチ</h1>
+        <input type="text" id="searchInput" class="textbox" placeholder="商品名...">
+        <button class="Button" onclick="searchProduct()">検索</button>
+
+        <h3>店舗一覧</h3>
+        <input type="text" id="shopName" class="textbox" placeholder="店舗名...">
+        <button class="Button" onclick="addshop()">追加</button>
+        <div id="shopError" style="color: #9b6a6c; font-size: 0.8em; margin-top: 5px;"></div>
+    </div>
+
+    <!-- 店舗一覧　-->
+    <div id="shopList">
+    </div>
+
+    <!-- 商品一覧　-->
+    <div id="detailPage" style="display: none;">
+        <button id="backBtn" class="Button" onclick="goBack()">← 店舗一覧へ戻る</button>
+        <h2 id="selectedStoreName">店舗名</h2>
+
+        <button id="editBtn" class="Button" onclick="toggleEditMode()">編集</button>
+
+        <div id="itemList"></div>
+    </div>
+
+    <!-- 編集モード　-->
+    <div id="addItemForm" style="display: none;">
+        <hr>
+        <button class="Button" onclick="openItemModal()">商品追加</button>
+        <button class="Button" onclick="openShopEditModal()">店舗編集</button>
+    </div>
+
+    <!-- 商品削除アラート　-->
+    <div id="customModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <p id="modalMessage">本当に削除しますか？</p>
+            <div class="modal-buttons">
+                <button class="Button" onclick="closeModal()">キャンセル</button>
+                <button id="modalConfirmBtn" class="danger-btn">削除する</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 店舗削除アラート　-->
+    <div id="shopDeleteModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <p>店舗を削除すると、登録した商品もすべて消えます。本当によろしいですか？</p>
+            <div class="modal-buttons">
+                <button class="Button" onclick="closeShopDeleteModal()">キャンセル</button>
+                <button id="shopDeleteConfirmBtn" class="danger-btn">店舗を削除する</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 店舗編集ダイアログ　-->
+    <div id="shopModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3 id="shopModalTitle">店舗を編集</h3>
+            <input type="text" id="editShopNameInput" class="textbox" placeholder="店舗名">
+            <div id="shopError" style="color: #9b6a6c; font-size: 0.8em;"></div>
+            <div class="modal-buttons">
+                <button class="Button" onclick="closeShopEditModal()">キャンセル</button>
+                <button id="shopSaveBtn" class="Button">保存</button>
+                <button id="shopDeleteEntryBtn" class="danger-btn">削除する</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 商品追加、変更ダイアログ　-->
+    <div id="itemModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3 id="modalTitle" class="textbox">商品を追加</h3> <input type="text" id="mItemName" class="textbox" placeholder="商品名">
+            <input type="number" id="mItemPrice" class="textbox" placeholder="価格">
+            <input type="number" id="mItemAmount" class="textbox" placeholder="容量">
+            <select id="mItemUnit" class="pulldown">
+                <option value="ml">ml</option>
+                <option value="g">g</option>
+                <option value="個">個</option>
+            </select>
+            <div id="mError" style="color: #9b6a6c; font-size: 0.8em;"></div>
+        
+            <div class="modal-buttons">
+                <button class="Button" onclick="closeItemModal()">キャンセル</button>
+                <button id="modalSubmitBtn" class="Button">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 最安値検索結果　-->
+    <div id="searchResultPage" style="display: none;">
+        <button class="Button" onclick="goToInput()">← 戻る</button>
+        <h2>最安値検索結果</h2>
+
+        <select id="sortMode" class="pulldown" onchange="displaySearchResults()">
+            <option value="simple">単純な値段が安い順</option>
+            <option value="unit">1単位あたりの値段が安い順</option>
+        </select>
+
+        <div id="searchResultList"></div>
+    </div>
+
+</body>
+</html>
