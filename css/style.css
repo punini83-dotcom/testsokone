@@ -1,0 +1,186 @@
+@charset "utf-8";
+
+body{
+    background-color: #fff; /* 背景色 */
+    font-family: zen-maru-gothic, sans-serif;
+}
+
+/* トップページ */
+#inputPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+        font-size: 2.5em;
+        margin-top: 20px;
+        font-family: zen-maru-gothic, sans-serif;
+        font-style: normal;
+        font-weight: 900;
+        color: #424b54;
+    }
+    h3 {
+        margin-top: 50px;
+        font-size: 2em;
+        font-family: zen-maru-gothic, sans-serif;
+        font-style: normal;
+        font-weight: 900;
+        color: #424b54;
+    }
+}
+
+/* 店舗一覧 */
+#shopList{
+    display: flex;
+    font-family: zen-maru-gothic, sans-serif;
+    font-weight: 550;
+    font-style: normal;
+    font-size: 1.8em;
+    color: #424b54;
+    flex-direction: column;
+    align-items: center;
+}
+.shop-item{
+    flex-direction: row;
+    margin: 10px;
+}
+
+/* 商品詳細ページ */
+#detailPage{
+    display: flex;
+    font-family: zen-maru-gothic, sans-serif;
+    font-weight: 550;
+    font-style: normal;
+    font-size: 1.8em;
+    color: #424b54;
+    flex-direction: column;
+    align-items: center;
+}
+.edit-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+.button-group {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+#addItemForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* 商品検索結果ページ */
+#searchResultPage{
+    display: flex;
+    font-family: zen-maru-gothic, sans-serif;
+    font-weight: 550;
+    font-size: 1.8em;
+    color: #424b54;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 画面全体を覆う背景 */
+.modal-overlay {
+    position: fixed; /* 画面に固定 */
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 半透明の黒 */
+    
+    /* 中身をど真ん中に寄せる魔法の3行 */
+    display: flex;
+    justify-content: center; /* 左右中央 */
+    align-items: center;     /* 上下中央 */
+    z-index: 1000;           /* 一番手前に表示 */
+}
+/* 白い箱 */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%; /* スマホで見やすい幅 */
+    max-width: 300px;
+    font-family: zen-maru-gothic, sans-serif;
+}
+
+/* プルダウンメニューのスタイル */
+.pulldown {
+  /* サイズと余白 */
+  width: 80%;
+  padding: 8px;
+  margin: 5px;
+
+  /* 枠線とコーナーの丸み */
+  border: 1px solid #93a8ac;
+  border-radius: 4px;
+
+  /* フォント設定 */
+  font-family: zen-maru-gothic, sans-serif;
+  font-size: 20px;
+
+  /* 背景色と文字色 */
+  background-color: white;
+  color: #424b54;
+
+  /* プルダウンの矢印を調整（ブラウザ間で異なる場合がある） */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='<http://www.w3.org/2000/svg>' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L0 3h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 25px;
+}
+
+.textbox {
+    width: 80%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #93a8ac;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+.Button{
+  border: none;  
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 10px;
+  text-decoration: none;
+  color: #FFF;
+  background: #e2b4bd;
+  margin: 5px;
+  width: 80%; /* スマホでは幅いっぱいに広がる */
+  max-width: 300px; /* パソコンでは300px以上にならないように制限 */
+}
+.Button:active{
+    transform: scale(.95);
+}
+
+.danger-btn{
+  border: none;  
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 10px;
+  text-decoration: none;
+  color: #FFF;
+  background: #9b6a6c;
+  margin: 5px;
+  width: 80%; /* スマホでは幅いっぱいに広がる */
+  max-width: 300px; /* パソコンでは300px以上にならないように制限 */
+}
+.Button:active{
+    transform: scale(.95);
+}
